@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class TemperatureModel {
@@ -13,4 +15,9 @@ public class TemperatureModel {
 
     @JsonProperty("pressure")
     private Integer pressure;
+
+    public long getTemperatureInCelcius() {
+        return Math.round(temperature - 273.15);
+    }
+
 }
